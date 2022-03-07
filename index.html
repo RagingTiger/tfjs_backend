@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>TensorFlow.js Backend</title>
+    <!-- Load TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
+    <!-- TensorFlow demo code -->
+    <script src="scripts/demo.js"></script>
+    <!-- link to main stylesheet -->
+    <link rel="stylesheet" type="text/css" href="styles/base.css">
+    <style>
+      #backend_display {
+        margin: auto auto;
+        text-align: center;
+      }
+      #backend {
+        color: #FF1493;
+        display: inline-block;
+        font-weight: bold;
+        font-family: 'Helvetica', 'Arial', 'Sans-Serif', monospace;
+        font-size:18px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="blurb">
+        <h1>TensorFlow.js Backend</h1>
+        <p>
+          Below is the current <i>backend</i>
+          <a href="https://www.tensorflow.org/jsTensorFlow.js">TensorFlow.js</a>
+          is using:
+        </p>
+      </div>
+      <div id="backend_display">
+        <div id="backend">
+          <!-- Place holder for backend output for TensorFlow.js -->
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    // Run demo linear reg
+    lin_reg_demo()
+
+    // Get backend used (must run some operation first before getting backend)
+    const backend = tf.getBackend();
+
+    // Get div for backend display
+    let backend_div = document.getElementById('backend');
+
+    // Update page with backend info
+    backend_div.innerHTML = `
+      <table>
+        <tr>
+          <th>Backend Used</th>
+        </tr>
+        <tr>
+          <td>${backend}</td>
+        </tr>
+      </table>
+    `;
+  </script>
+</html>
